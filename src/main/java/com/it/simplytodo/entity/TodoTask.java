@@ -1,5 +1,7 @@
 package com.it.simplytodo.entity;
 
+import com.it.simplytodo.enums.TodoTaskStatus;
+
 import java.util.Date;
 
 
