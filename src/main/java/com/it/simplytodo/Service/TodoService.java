@@ -15,7 +15,8 @@ public class TodoService {
     public TodoTask createOrUpdate(TodoTask todoTask){
         //autobox int id into Integer
         Integer taskId = todoTask.getId();
-        return todoTaskStore.put(taskId, todoTask);
+        todoTaskStore.put(taskId, todoTask);
+        return todoTask;
     }
 
     //id is int but key is integer
