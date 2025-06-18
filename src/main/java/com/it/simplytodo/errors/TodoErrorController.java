@@ -17,7 +17,6 @@ public class TodoErrorController {
         errorResponse.setStatus(HttpStatus.INTERNAL_SERVER_ERROR);
          return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    
 
 }
 
