@@ -4,21 +4,31 @@ import com.it.simplytodo.enums.TodoTaskStatus;
 
 import java.util.Date;
 
+import lombok.Getter;
+import lombok.Setter;
+
 
 public class TodoTask {
+
+    @Getter
     private static int idCounter = 0;
 
+    @Getter
     private int id = idCounter ++;
+
+    @Getter @Setter
     private String title;
+
+    @Getter @Setter
     private String description;
 
+    @Getter @Setter
     private TodoTaskStatus status = TodoTaskStatus.Not_STARTED;
-    private Date dueDate;
-    private Date createdAt = Date.from(java.time.Instant.now());
 
-    //maybe if i have a @Component or like the lombok i can save this?
-    public int getId() {
-        return id;
-    }
+    @Getter @Setter
+    private Date dueDate;
+
+    @Getter
+    private Date createdAt = Date.from(java.time.Instant.now());
 
 }
