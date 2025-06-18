@@ -1,34 +1,26 @@
 package com.it.simplytodo.entity;
 
 import com.it.simplytodo.enums.TodoTaskStatus;
-
-import java.util.Date;
-
+import lombok.AccessLevel;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Date;
 
+
+
+@Data
 public class TodoTask {
-
-    @Getter
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     private static int idCounter = 0;
-
-    @Getter
+    @Setter(AccessLevel.NONE)
     private int id = idCounter ++;
-
-    @Getter @Setter
     private String title;
-
-    @Getter @Setter
     private String description;
-
-    @Getter @Setter
     private TodoTaskStatus status = TodoTaskStatus.Not_STARTED;
-
-    @Getter @Setter
     private Date dueDate;
-
-    @Getter
     private Date createdAt = Date.from(java.time.Instant.now());
 
 }
