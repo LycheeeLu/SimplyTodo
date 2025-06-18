@@ -14,10 +14,12 @@ import java.util.List;
 @Tag(name = "Todo Task Controller", description = "Operations on Todo Tasks")
 public class TodoController {
 
+    private final TodoService todoService;
 
     @Autowired
-    private TodoService todoService;
-    // injected the TodoService beans;
+    public TodoController(TodoService todoService){
+        this.todoService = todoService;
+    }
 
     @GetMapping("/task/{id}")
     @Operation(summary = "Get a task by ID", description = "Provide an ID to look up specific task")
