@@ -1,40 +1,45 @@
 package com.it.simplytodo.Service;
 
 import com.it.simplytodo.entity.TodoTask;
+import com.it.simplytodo.errors.TodoErrorStatus;
+import com.it.simplytodo.errors.TodoException;
+import com.it.simplytodo.repository.TodoTaskRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
+
+import static com.it.simplytodo.errors.TodoErrorStatus.NOT_FOUND;
 
 @Service
 public class TodoService {
-    //create HashMap structure to store tasks
-    private static HashMap<Integer, TodoTask> todoTaskStore =
-            new HashMap<>();
 
-    public TodoTask createOrUpdate(TodoTask todoTask){
+    @Autowired
+    private TodoTaskRepository todoTaskRepository;
+
+    public TodoTask createOrUpdate(TodoTask todoTask) throws TodoException {
         //autobox int id into Integer
         Integer taskId = todoTask.getId();
-        todoTaskStore.put(taskId, todoTask);
+        todoTaskRepository.save(todoTask);
         // different from sample code
         return todoTask;
     }
 
     //id is int but key is integer
-    public TodoTask getTask(int id) {
-        return todoTaskStore.get(id);
+    public TodoTask getTask(int id) throws TodoException{
+        TodoTask task = todoTaskRepository.findById(id)
+                .orElseThrow(() -> new TodoException(NOT_FOUND,"Task not found"));
+        return task;
     }
 
     //extra feature: throw execptions
-    public void deleteTask(int id) {
-        if(todoTaskStore.remove(id) == null){
-            throw new IllegalArgumentException("Task id not found");
-        }
+    public void deleteTask(int id) throws TodoException {
+         todoTaskRepository.deleteById(id);
     }
 
     //otherwise have to iterate through Hashmap
-    public List<TodoTask> getAllTasks(){
-        return todoTaskStore.values().stream().toList();
+    public List<TodoTask> getAllTasks() throws TodoException{
+        return todoTaskRepository.findAll();
     }
 
 }
