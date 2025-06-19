@@ -2,13 +2,12 @@ package com.it.simplytodo.controller;
 
 import com.it.simplytodo.Service.TodoService;
 import com.it.simplytodo.entity.TodoTask;
-import com.it.simplytodo.errors.TodoErrorStatus;
+import com.it.simplytodo.enums.TodoErrorStatus;
 import com.it.simplytodo.errors.TodoException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 

@@ -11,10 +11,11 @@ import java.util.List;
 
 @Entity
 @Data
-public class User {
+public class TodoUser {
 
     @Id
     private int user_id;
+
     private String username;
     private String password;
     private String email;

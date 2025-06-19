@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class TodoErrorController {
 
-    @ExceptionHandler(TodoException.class)
+    @ExceptionHandler(Exception.class)
     public ResponseEntity<TodoErrorResponse> handleException (Exception e){
         TodoErrorResponse errorResponse = new TodoErrorResponse();
         errorResponse.setMessage(e.getMessage());

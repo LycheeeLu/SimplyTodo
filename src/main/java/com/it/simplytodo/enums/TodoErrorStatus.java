@@ -1,4 +1,4 @@
-package com.it.simplytodo.errors;
+package com.it.simplytodo.enums;
 
 public enum TodoErrorStatus {
     INTERNAL_SERVER_ERROR,

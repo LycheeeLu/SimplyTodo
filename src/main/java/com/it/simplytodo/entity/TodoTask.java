@@ -39,5 +39,5 @@ public class TodoTask {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private User user;
+    private TodoUser user;
 }

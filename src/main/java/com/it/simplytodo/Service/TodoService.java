@@ -1,7 +1,6 @@
 package com.it.simplytodo.Service;
 
 import com.it.simplytodo.entity.TodoTask;
-import com.it.simplytodo.errors.TodoErrorStatus;
 import com.it.simplytodo.errors.TodoException;
 import com.it.simplytodo.repository.TodoTaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.it.simplytodo.errors.TodoErrorStatus.NOT_FOUND;
+import static com.it.simplytodo.enums.TodoErrorStatus.NOT_FOUND;
 
 @Service
 public class TodoService {
