@@ -1,5 +1,6 @@
 package com.it.simplytodo.entity;
 
+import com.it.simplytodo.annotation.Phone;
 import com.it.simplytodo.enums.TodoTaskStatus;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
@@ -32,4 +33,7 @@ public class TodoTask {
 
     @ElementCollection
     private Set<String> tags;
+
+    @Phone
+    private String phone;
 }
