@@ -2,10 +2,14 @@ package com.it.simplytodo.controller;
 
 import com.it.simplytodo.Service.TodoService;
 import com.it.simplytodo.entity.TodoTask;
+import com.it.simplytodo.errors.TodoErrorStatus;
 import com.it.simplytodo.errors.TodoException;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,7 +44,20 @@ public class TodoController {
 
     @PostMapping("/task")
     @Operation(summary = "update or create a task", description = "create a new task or update an old one(with specified id)")
-    public TodoTask createTask(@RequestBody TodoTask todoTask) throws TodoException{
+    public TodoTask createTask(@RequestBody @Valid TodoTask todoTask, BindingResult bindingResult) throws TodoException{
+       if (bindingResult.hasErrors()) {
+
+           //handle validation errors
+           List<String> errors = bindingResult.getFieldErrors().stream()
+                   .map(error ->error.getField() + ": " + error.getDefaultMessage())
+                   .toList();
+
+           String errorMessage = String.join(", ", errors);
+
+            // throw new exception
+           throw new TodoException(TodoErrorStatus.VALIDATION_ERROR, errorMessage);
+       }
+
         return todoService.createOrUpdate(todoTask);
     }
 }

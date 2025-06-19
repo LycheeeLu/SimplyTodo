@@ -20,7 +20,7 @@ public class TodoErrorController {
 
 
     @ExceptionHandler(TodoException.class)
-    public ResponseEntity<TodoErrorResponse> hanbleTodoException (TodoException e){
+    public ResponseEntity<TodoErrorResponse> handleTodoException (TodoException e){
         HttpStatus httpStatus;
 
         switch (e.getStatus()) {
