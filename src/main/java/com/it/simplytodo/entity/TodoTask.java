@@ -36,4 +36,8 @@ public class TodoTask {
 
     @Phone
     private String phone;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
