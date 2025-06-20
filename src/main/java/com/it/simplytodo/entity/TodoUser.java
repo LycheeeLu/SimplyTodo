@@ -4,25 +4,25 @@ package com.it.simplytodo.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.it.simplytodo.annotation.Password;
+import com.it.simplytodo.annotation.Phone;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity(name = "TodoUser")
+@Table(name = "todo_user")
 @Data
 public class TodoUser {
 
     @Id
     @JsonIgnore //avoid exposing id to user, username is the identifier
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int user_id;
+    private int id;
 
     @NotEmpty(message = "Name cannot be empty")
     private String username;
@@ -34,7 +34,11 @@ public class TodoUser {
     @Email
     private String email;
 
-    @OneToMany
-    List<TodoTask> tasks = new ArrayList<>();
+    @Phone(message = "invalid phone number")
+    private String phone;
+
+
+    @Transient // this field will not be persisted in the database
+    private List<TodoTask> tasks;
 
 }

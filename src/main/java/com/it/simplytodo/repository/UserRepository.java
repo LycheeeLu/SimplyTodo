@@ -5,10 +5,14 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<TodoUser, Integer> {
-    List<TodoUser> findByUser_id(int user_id);
-    List<TodoUser> findByEmail(String email);
+    //TodoUser findById(int user_id);
+    Optional<TodoUser> findByEmail(String email);
+    //void deleteById(int user_id);
+    //TodoUser save(TodoUser user);
+    //List<TodoUser> findAll();
 
 }

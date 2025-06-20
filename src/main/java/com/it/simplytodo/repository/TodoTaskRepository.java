@@ -13,9 +13,6 @@ public interface TodoTaskRepository extends JpaRepository<TodoTask, Integer> {
     // instead of redefining the methods, only define new ones needed
     List<TodoTask> findByStatus(TodoTaskStatus status);
 
-    // TodoTask findById(int id);
-    // void deleteById(int id);
-    //TodoTask save(TodoTask todoTask);
 
     // NAMED PARAMS can be used like like :keyword
     @Query("SELECT t FROM TodoTask  t WHERE t.title LIKE %:keyword%")
