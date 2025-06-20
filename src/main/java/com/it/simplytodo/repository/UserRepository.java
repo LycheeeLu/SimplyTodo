@@ -9,10 +9,8 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<TodoUser, Integer> {
-    //TodoUser findById(int user_id);
+
+    // why dont i need a Query hmmm?
     Optional<TodoUser> findByEmail(String email);
-    //void deleteById(int user_id);
-    //TodoUser save(TodoUser user);
-    //List<TodoUser> findAll();
 
 }
