@@ -1,0 +1,25 @@
+management:
+  endpoint:
+    health:
+      group:
+        custom:
+          show-components: when_authorized
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: '*'
+spring:
+  application:
+    name: Simply-Todo
+  datasource:
+    password: mypassword
+    url: jdbc:postgresql://localhost:5432/simplytodo
+    username: admin
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
