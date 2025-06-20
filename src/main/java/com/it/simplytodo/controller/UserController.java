@@ -26,7 +26,7 @@ public class UserController {
 
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/users/id/{id}")
     public TodoUser getUserById(@PathVariable int id) throws TodoException {
         return userService.getUserById(id);
     }
@@ -36,7 +36,7 @@ public class UserController {
         return userService.getAllUsers();
     }
 
-    @GetMapping("/users/{email}")
+    @GetMapping("/users/email/{email}")
     public TodoUser getUserByEmail(@PathVariable String email)  {
         return userService.getUserByEmail(email);
     }
@@ -64,7 +64,7 @@ public class UserController {
     }
 
 
-    @PostMapping("/users/{title}")
+    @GetMapping("/users/title/{title}")
     public List<TodoUser> getUserByTaskTitle(@PathVariable String title){
         return userService.getAllUserWithTaskTitle(title);
     }
